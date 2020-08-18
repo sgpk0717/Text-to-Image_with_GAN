@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Learn Flask</title>
+<!--    <link rel="stylesheet" type="text/css" href="CSS/main.css?ver1">-->
+    <style>
+        .area1 {
+            width: 100%;
+            background-color: #003333;
+            text-align: center;
+            color: #FFE08C;
+        }
+    </style>
+</head>
+<body style="background-color: #FFE08C;">
+    <div class="area1">
+        <form method="POST" action="/calculate">
+            <h1> 입력하는 문장을 이미지로 변환해드립니다. </h1>
+            <div style="text-align: right; margin-right: 10%;">
+                <h2>GAN다 박창조</h2>
+                <h4>정보컴퓨터공학전공 201524461 박성국</h4>
+                <h4>정보컴퓨터공학전공 201724557 장수현</h4>
+                <h4>정보컴퓨터공학전공 201724480 박창조</h4>
+            </div>
+            <h3> 이미지 생성하고자 하는 문장을 입력하세요.</h3>
+            <input type="text" name="num">
+            <button type="submit">이미지 변환하기</button>
+        </form>
+        <div>
+            <p>
+                {% if num == None %}
+                    <h5> hi? </h5>
+                {% else %}
+                    {% for i in range(1,10) %}
+                        <p>{{num}} x {{i}} = {{num*i}}</br></p>
+                    {% endfor %}
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</body>
+</html>
