@@ -1,0 +1,10 @@
+body{
+    background-color: #046fd9;
+}
+
+.area1 {
+    display: inline;
+    width: 90%;
+    background-color: #046fd9;
+    text-align: center;
+}
