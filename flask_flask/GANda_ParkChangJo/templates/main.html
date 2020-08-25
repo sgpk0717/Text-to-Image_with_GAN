@@ -1,39 +1,77 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Learn Flask</title>
-<!--    <link rel="stylesheet" type="text/css" href="CSS/main.css?ver1">-->
-    <style>
-        .area1 {
-            width: 100%;
-            background-color: #003333;
-            text-align: center;
-            color: #FFE08C;
+    <title>GAN다 박창조</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css?ver1">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        function scroll_move(){
+            $('html, body').stop().animate({
+                scrollTop : $('.output_area').offset().top, behavior: 'smooth'
+                }, 400);
         }
-    </style>
+    </script>
 </head>
-<body style="background-color: #FFE08C;">
+<body>
     <div class="area1">
-        <form method="POST" action="/calculate">
+        <form>
             <h1> 입력하는 문장을 이미지로 변환해드립니다. </h1>
-            <div style="text-align: right; margin-right: 10%;">
+            <div class="team_info">
                 <h2>GAN다 박창조</h2>
                 <h4>정보컴퓨터공학전공 201524461 박성국</h4>
                 <h4>정보컴퓨터공학전공 201724557 장수현</h4>
                 <h4>정보컴퓨터공학전공 201724480 박창조</h4>
             </div>
-            <h3> 이미지 생성하고자 하는 문장을 입력하세요.</h3>
-            <input type="text" name="num">
-            <button type="submit">이미지 변환하기</button>
+        </form>
+    </div>
+    <div class="area2">
+        <form method="POST" action="/translate">
+            <h2> 이미지 생성하고자 하는 문장을 입력하세요.</h2>
+            <div style="margin: 10px;">
+                <input class="txt_input" type="text" name="obj">
+            </div>
+            <button class="btn" type="submit" onclick="scroll_move()">이미지 변환하기</button>
         </form>
         <div>
-            <p>
-                {% if num == None %}
-                    <h5> hi? </h5>
+            <p class="output_area">
+                <h4> 입력된 문장 : {{obj}}</h4>
+                {% if obj == "chicken" %}
+                    <div class="img_box">
+                        <div class="img_before">
+                            <h4>before</h4>
+                            <img src="../static/css/images/chicken01_before.png" alt="chicken_img" width=100%;>
+                        </div>
+                        <div class="img_after">
+                            <h4>after</h4>
+                            <img src="../static/css/images/chicken01_after.png" alt="chicken_img" width=100%;>
+                        </div>
+                    </div>
+                {% elif obj == "bird" %}
+                    <div class="img_box">
+                        <div class="img_before">
+                            <h4>before</h4>
+                            <img src="../static/css/result/test/png/b2a/0000_input_b.png" alt="input_img" width=100%;>
+                        </div>
+                        <div class="img_after">
+                            <h4>after</h4>
+                            <img src="../static/css/result/test/png/b2a/0000_output_a.png" alt="output_img" width=100%;>
+                        </div>
+                    </div>
+                {% elif obj == "붉은 털을 가진 여우" %}
+                    <div class="img_box">
+                        <div class="img_before">
+                            <h4>before</h4>
+                            <img src="../static/css/result/test/png/b2a/0001_input_b.png" alt="input_img" width=100%;>
+                        </div>
+                        <div class="img_after">
+                            <h4>after</h4>
+                            <img src="../static/css/result/test/png/b2a/0001_output_a.png" alt="output_img" width=100%;>
+                        </div>
+                    </div>
                 {% else %}
-                    {% for i in range(1,10) %}
-                        <p>{{num}} x {{i}} = {{num*i}}</br></p>
-                    {% endfor %}
+<!--                    {% for i in range(1,10) %}-->
+<!--                        <p>hello</br></p>-->
+<!--                    {% endfor %}-->
                 {% endif %}
             </p>
         </div>
